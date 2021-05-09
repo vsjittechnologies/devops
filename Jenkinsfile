@@ -8,7 +8,7 @@ pipeline{
         }
         stage("Deploy"){
             steps{
-              sh "java -jar medilab-morning-preclinic-war-0.0.1-SNAPSHOT.war"    
+              sh "java -jar C:\Users\bprayaga\.jenkins\workspace\medilab-preclinic-pipeline\target\medilab-morning-preclinic-war-0.0.1-SNAPSHOT.war"    
             }
             
         }
