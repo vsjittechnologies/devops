@@ -1,0 +1,4 @@
+FROM httpd:latest
+WORKDIR /usr/local/apache2/httpdocs
+ADD medilab-web-site /usr/local/apache2/httpdocs/medilab-website
+#COPY source dest

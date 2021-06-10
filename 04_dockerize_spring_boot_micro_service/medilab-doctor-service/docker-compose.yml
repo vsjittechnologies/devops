@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  doctor-mysql-db-service:
+    container_name: doctor-mysql-db
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: medilab-doctor-service
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: "%"
+  doctor-service-dev-app:
+    container_name: doctor-app-dev-service
+    image: medilab-doctor-dev-img
+    ports:
+      - 5099:9099
+    restart: on-failure
+    depends_on:
+      - doctor-mysql-db-service

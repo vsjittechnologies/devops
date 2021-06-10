@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="ConsoleAppender"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>
+				%d{dd-MM-yyyy HH:mm:ss}-[%thread]-%5level-%logger{36}-%L-%msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<!-- <appender name="FileAppender"
+		class="ch.qos.logback.core.FileAppender">
+		<file>c:/logs/medilab-preclinic.log</file>
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{dd-MM-yyyy HH:mm:ss}-[%thread]-%5level-%logger{36}-%L-%msg%n
+			</Pattern>
+		</encoder>
+	</appender> -->
+	<appender name="RollingAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>c:/logs/medilab-preclinic.log</file>
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%d{dd-MM-yyyy HH:mm:ss}-[%thread]-%5level-%logger{36}-%L-%msg%n
+			</Pattern>
+		</encoder>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>c:/logs/medilab-preclinic_%d{dd-MM-yyyy}-%i.log
+			</fileNamePattern>
+			<maxHistory>10</maxHistory>
+			<maxFileSize>2KB</maxFileSize>
+			<totalSizeCap>10KB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+	<!-- Logging custom package -->
+	<logger name="com.medilab.preclinic" level="info"
+		additivity="false">
+		<appender-ref ref="ConsoleAppender"></appender-ref>
+		<!-- <appender-ref ref="FileAppender"></appender-ref> -->
+		<appender-ref ref="RollingAppender"></appender-ref>
+	</logger>
+
+	<!-- Logging spring boot package -->
+	<logger name="org.springframework.boot" level="info" additivity="false">
+		<appender-ref ref="ConsoleAppender"></appender-ref>
+		<!-- <appender-ref ref="FileAppender"></appender-ref> -->
+		<appender-ref ref="RollingAppender"></appender-ref>
+	</logger>
+
+
+	<root level="info">
+		<appender-ref ref="ConsoleAppender"></appender-ref>
+	</root>
+</configuration>

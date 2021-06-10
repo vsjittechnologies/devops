@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: medilab-morning-preclinic
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix:  .jsp
+  jpa:
+    show-sql: true
+    generate-ddl: true
+  profiles:
+    active: 
+     - stage
+    
+server:
+  port: 8087
+
+#logging:
+#  level:
+#    root: info
+#  file:
+#    name: spring.log
+#  pattern:
+#    file: ${dd-MM-yyyy HH:mm:ss}-[%Thread]-%5level-%logger{36}-%ln-%msg%n
+
+---
+server:
+ port: 8087
+spring:
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/medilab-vsjit-preclinic
+  profiles: dev
+---
+server:
+ port: 8089
+spring:
+  profiles: stage
+  h2:
+   console:
+    enabled: true
+    path: /h2Console  
