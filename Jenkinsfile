@@ -8,7 +8,7 @@ pipeline{
         }
         stage("Deploy"){
             steps{
-              exec "java -jar ${WORKSPACE}\medilab-preclinic-registry-pipeline\target\medilab-morning-preclinic-war-0.0.1-SNAPSHOT.war"    
+              exec "java -jar ${WORKSPACE}/medilab-preclinic-registry-pipeline/target/medilab-morning-preclinic-war-0.0.1-SNAPSHOT.war"    
             }
             
         }
