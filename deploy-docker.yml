@@ -14,7 +14,7 @@
       - name: Start the container
          docker_container:
            name: medilab-webapp
-           Image: ""
+           Image: "vsjit/preclinic-weapp-imag:0.0.1"
            state: Started
            published_Ports:
             - 0.0.0.0:8087:8087
