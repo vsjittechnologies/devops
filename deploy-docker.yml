@@ -1,6 +1,5 @@
 ---
-  - hosts: dev
-    become: True
+  - hosts: all
     tasks:
       - name: Install python pip
          yum:
@@ -15,11 +14,14 @@
              name: docker
              state: started
              enabled: yes    
-  
+      -name: stop container
+       shell: docker stop medilab-webapp
+      -name: remove the container
+       shell: docker rm medilab-webapp
       - name: Start the container
          docker_container:
            name: medilab-webapp
-           Image: "vsjit/preclinic-weapp-imag:0.0.1"
+           Image: "vsjit/medilab-web-app:latest"
            state: Started
            published_Ports:
             - 0.0.0.0:8087:8087
