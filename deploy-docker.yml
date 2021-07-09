@@ -1,27 +1,11 @@
 ---
   - hosts: all
     tasks:
-      - name: Install python pip
-         yum:
-          name: python-pip
-          state: present
-      - name: Install docker-py python module
-         pip:
-          name: docker-py
-          state: present
-      - name: start docker
-          service:
-             name: docker
-             state: started
-             enabled: yes    
-      -name: stop container
-       shell: docker stop medilab-webapp
-      -name: remove the container
-       shell: docker rm medilab-webapp
-      - name: Start the container
-         docker_container:
-           name: medilab-webapp
-           Image: "vsjit/medilab-web-app:latest"
-           state: Started
-           published_Ports:
-            - 0.0.0.0:8087:8087
+      - name: stop the container
+        shell: docker stop medilab-web-app
+      - name: remove the container
+        shell: docker rm -f medilab-web-app
+      -name: remove the tagged image
+       shell: docker rmi -f vsjit/medilab-web-app-image:latest
+      -name: run the container
+       shell: docker run -td --name=medilab-web-app -p 8087:8087 vsjit/medilab-web-app-image:latest
