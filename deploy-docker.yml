@@ -2,10 +2,10 @@
   - hosts: all
     tasks:
       - name: stop the container
-         shell: docker stop medilab-web-app
+        shell: docker container stop medilab-web-app
       - name: remove the container
-         shell: docker rm -f medilab-web-app
-      -name: remove the tagged image
+        shell: docker rm -f medilab-web-app
+      - name: remove the tagged image
         shell: docker rmi -f vsjit/medilab-web-app-image:latest
-      -name: run the container
+      - name: run the container
         shell: docker run -td --name=medilab-web-app -p 8087:8087 vsjit/medilab-web-app-image:latest
