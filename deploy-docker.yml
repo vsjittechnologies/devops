@@ -1,5 +1,5 @@
 ---
-  - hosts: all
+  - hosts: dev
     tasks:
       - name: stop the container
         shell: docker container stop medilab-web-app
