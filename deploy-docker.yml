@@ -1,6 +1,12 @@
 ---
   - hosts: all
     tasks:
+      - name: stop container
+        shell: docker container stop medilab-web-app
+      - name: delete container
+        shell: docker container rm medilab-web-app
+      - name: remove docker image
+        shell: docker rmi -f vsjit/medilab-pet-clinic-img
       - name: docker hub login
         shell: docker login -u vsjit -p vsjIt@123
       - name: run the container
