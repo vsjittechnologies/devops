@@ -1,5 +1,5 @@
 ---
-  - hosts: dev
+  - hosts: 172.31.20.168
     tasks:
       - name: stop the container
         shell: docker container stop medilab-web-app
