@@ -2,4 +2,4 @@
   - hosts: all
     tasks:
       - name: run the container
-        shell: docker run -td --name=medilab-web-app -p 8087:8087 vsjit/medilab-web-app-image:latest
+        shell: docker run -td --name=medilab-web-app -p 8087:8087 vsjit/medilab-web-app-image
